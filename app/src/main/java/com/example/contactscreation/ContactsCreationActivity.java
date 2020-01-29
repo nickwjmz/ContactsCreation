@@ -22,6 +22,9 @@ public class ContactsCreationActivity extends AppCompatActivity {
     EditText etSocialMediaURL;
     Button btnSave;
 
+    public static final String CONTACTS_CREATION_ACTIVITY_KEY = ContactsCreationActivity.class
+            .getSimpleName()+"KEY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +66,7 @@ public class ContactsCreationActivity extends AppCompatActivity {
 
                     socialMediaList.add(socialMediaInfo);
                     contactInfo.setSocialMediaList(socialMediaList);
-                    intent.putExtra("data", contactInfo);
+                    intent.putExtra(CONTACTS_CREATION_ACTIVITY_KEY, contactInfo);
                     setResult(RESULT_OK, intent);
                     finish();
                 }

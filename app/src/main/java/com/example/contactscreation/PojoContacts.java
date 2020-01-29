@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import java.util.List;
 
 public class PojoContacts implements Parcelable {
+
     private String firstName;
     private String lastName;
     private List<SocialMedia> socialMediaList;
@@ -17,11 +18,11 @@ public class PojoContacts implements Parcelable {
     protected PojoContacts(Parcel in) {
         firstName = in.readString();
         lastName = in.readString();
-        // todo read from the list (Social Media)
         socialMediaList = in.readArrayList(SocialMedia.class.getClassLoader());
     }
 
     public static final Creator<PojoContacts> CREATOR = new Creator<PojoContacts>() {
+
         @Override
         public PojoContacts createFromParcel(Parcel in) {
             return new PojoContacts(in);
@@ -35,6 +36,7 @@ public class PojoContacts implements Parcelable {
 
     @Override
     public String toString() {
+
         return "PojoContacts{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -74,6 +76,7 @@ public class PojoContacts implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+
         dest.writeString(firstName);
         dest.writeString(lastName);
         // todo read from the list (Social Media)

@@ -8,13 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class ContactsAdapter
-        extends RecyclerView.Adapter<ContactsViewHolder> {
+public class ContactsAdapter extends RecyclerView.Adapter<ContactsViewHolder> {
 
     private List<PojoContacts> dataSet;
+    private ShowAllDataInterface listener;
 
     public void setDataSet(List<PojoContacts> dataSet) {
         this.dataSet = dataSet;
+        notifyDataSetChanged();
+    }
+
+    public void setListener(ShowAllDataInterface listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -28,14 +33,7 @@ public class ContactsAdapter
 
     @Override
     public void onBindViewHolder(@NonNull ContactsViewHolder holder, int position) {
-        holder.tvContactsFirstName.setText(dataSet.get(position).getFirstName());
-        holder.tvContactsLastName.setText(dataSet.get(position).getLastName());
-
-        List<SocialMedia> list = dataSet.get(position).getSocialMediaList();
-
-        SocialMedia firstSocial = list.get(0);  // Pulling 1st element from list of Social medias
-        holder.tvSocialMediaApp.setText(firstSocial.getSocialMediaApp());
-        holder.tvSocialMediaUrl.setText(firstSocial.getUserUrl());
+        holder.onBind(dataSet.get(position), listener);
     }
 
     @Override
