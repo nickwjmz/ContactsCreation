@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ContactsCreation</string>
+    <string name="til_hint_first_name">First Name</string>
+    <string name="til_hint_last_name">Last name</string>
+    <string name="et_hint_social_media">Social Media</string>
+    <string name="et_hint_social_media_url">Social Media URL</string>
+    <string name="btn_text_save_social_media">Save Social Media</string>
+</resources>
